@@ -1,0 +1,20 @@
+{% if operation.HasDocumentation -%}
+/**
+{%     if operation.HasSummary -%}
+ * {{ operation.Summary }}
+{%     endif -%}
+{%     for parameter in operation.Parameters -%}
+{%        unless parameter.VariableName contains unlessName -%}
+{%          if parameter.HasDescriptionOrIsOptional -%}
+ * @param {{ parameter.VariableName }}{% if parameter.IsOptional %} (optional){% endif %} {{ parameter.Description }}
+{%          endif -%}
+{%         endunless -%}
+{%     endfor -%}
+{%     if operation.HasResultDescription -%}
+ * @return {{ operation.ResultDescription }}
+{%     endif -%}
+{%     if operation.IsDeprecated -%}
+ * @deprecated
+{%     endif -%}
+ */
+{% endif -%}
