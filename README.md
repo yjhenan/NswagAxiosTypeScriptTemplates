@@ -10,6 +10,8 @@
 效果如下：
 
 ```ts
+import AxiosRequest from "@/plugins/axios";
+
 export class APP_APIServiceProxy {
 
     /**
